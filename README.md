@@ -28,14 +28,10 @@ Functions for Numbers and Operators
 handleNumber(num)
 Appends a digit to the current input.
 
-js
-Копировать код
 currentInput += num;
 handleOperator(op)
 Stores the operator and moves the current input to firstOperand. Clears currentInput.
 
-js
-Копировать код
 firstOperand = parseFloat(currentInput);
 operator = op;
 currentInput = '';
@@ -50,59 +46,43 @@ Additional Operations
 calculatePercentage()
 Calculates the percentage of the current value.
 
-js
-Копировать код
 currentInput = (parseFloat(currentInput) / 100).toString();
 calculateSquare()
 Squares the current input and adds the result to the history.
 
-js
-Копировать код
 const result = parseFloat(currentInput) ** 2;
-addToHistory(`${currentInput}² = ${result}`);
+addToHistory(currentInput + '² = ' + result);
 currentInput = result.toString();
 calculateSqrt()
 Calculates the square root of the current input and adds the result to the history.
 
-js
-Копировать код
 const result = Math.sqrt(parseFloat(currentInput));
-addToHistory(`√${currentInput} = ${result}`);
+addToHistory("√" + currentInput + " = " + result);
 currentInput = result.toString();
 insertPi()
 Inserts the value of π into currentInput.
 
-js
-Копировать код
 currentInput = Math.PI.toString();
 Clearing and Input Management
 clearCalculator()
 Clears the current input, operands, and operator.
 
-js
-Копировать код
 currentInput = '';
 firstOperand = null;
 operator = null;
 backspace()
 Deletes the last character from the current input.
 
-js
-Копировать код
 currentInput = currentInput.slice(0, -1) || '';
 clearHistory()
 Clears the entire calculation history.
 
-js
-Копировать код
 historyList.innerHTML = '';
 Updating Display and History
 updateResult()
 Updates the value displayed in the result field.
 If currentInput is empty, displays 0.
 
-js
-Копировать код
 resultField.value = currentInput || '0';
 addToHistory(entry)
 Adds a new entry to the calculation history:
@@ -110,8 +90,7 @@ Adds a new entry to the calculation history:
 Creates a new <li> element.
 Sets its text content to the provided entry.
 Appends the element to the #history-list.
-js
-Копировать код
+
 const li = document.createElement('li');
 li.textContent = entry;
 historyList.appendChild(li);
